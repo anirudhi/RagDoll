@@ -19,19 +19,19 @@ public class Body {
         Torso torso = new Torso(300, 400);
 
         // Create other body parts
-        BodyPart head = new BodyPart(200, 150, new PointF(75, -200), new PointF(75, 200));
-        BodyPart leftArmUpper = new BodyPart(200, 100, new PointF(-50, 0), new PointF(50, 0));
-        BodyPart leftArmLower = new BodyPart(150, 80, new PointF(10, 200), new PointF(40, 0));
-        BodyPart leftHand = new BodyPart(100, 50, new PointF(15, 150), new PointF(25, 0));
-        BodyPart rightArmUpper = new BodyPart(200, 100, new PointF(250, 0), new PointF(50, 0));
-        BodyPart rightArmLower = new BodyPart(150, 80, new PointF(10, 200), new PointF(40, 0));
-        BodyPart rightHand = new BodyPart(100, 50, new PointF(15, 150), new PointF(50, 0));
-        BodyPart leftLegUpper = new BodyPart(300, 110, new PointF(0, 400), new PointF(55, 0));
-        BodyPart leftLegLower = new BodyPart(200, 90, new PointF(10, 300), new PointF(45, 0));
-        BodyPart leftFoot = new BodyPart(75, 50, new PointF(22, 200), new PointF(25, 0));
-        BodyPart rightLegUpper = new BodyPart(300, 110, new PointF(190, 400), new PointF(55, 0));
-        BodyPart rightLegLower = new BodyPart(200, 90, new PointF(10, 300), new PointF(45, 0));
-        BodyPart rightFoot = new BodyPart(75, 50, new PointF(22, 200), new PointF(25, 0));
+        BodyPart head = new BodyPart(200, 150, new PointF(75, -200), new PointF(75, 200), 50.0f);
+        BodyPart leftArmUpper = new BodyPart(200, 100, new PointF(-50, 0), new PointF(50, 0), 0f);
+        BodyPart leftArmLower = new BodyPart(150, 80, new PointF(10, 200), new PointF(40, 0), 135.0f);
+        BodyPart leftHand = new BodyPart(100, 50, new PointF(15, 150), new PointF(25, 0), 35.0f);
+        BodyPart rightArmUpper = new BodyPart(200, 100, new PointF(250, 0), new PointF(50, 0), 0f);
+        BodyPart rightArmLower = new BodyPart(150, 80, new PointF(10, 200), new PointF(40, 0), 135.0f);
+        BodyPart rightHand = new BodyPart(100, 50, new PointF(15, 150), new PointF(25, 0), 35.0f);
+        BodyPart leftLegUpper = new BodyPart(300, 110, new PointF(0, 400), new PointF(55, 0), 90.0f);
+        BodyPart leftLegLower = new BodyPart(200, 90, new PointF(10, 300), new PointF(45, 0), 90.0f);
+        BodyPart leftFoot = new BodyPart(75, 50, new PointF(22, 200), new PointF(25, 0), 35.0f);
+        BodyPart rightLegUpper = new BodyPart(300, 110, new PointF(190, 400), new PointF(55, 0), 90.0f);
+        BodyPart rightLegLower = new BodyPart(200, 90, new PointF(10, 300), new PointF(45, 0), 90.0f);
+        BodyPart rightFoot = new BodyPart(75, 50, new PointF(22, 200), new PointF(25, 0), 35.0f);
 
         // Add torso children
         torso.addChild(leftArmUpper);

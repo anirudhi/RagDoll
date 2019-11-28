@@ -11,6 +11,7 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
 import android.view.View;
 
 import androidx.core.view.MotionEventCompat;
@@ -44,21 +45,31 @@ public class DrawView extends View {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         int action = MotionEventCompat.getActionMasked(event);
+        int index = MotionEventCompat.getActionIndex(event);
 
-        switch (action) {
-            case (MotionEvent.ACTION_DOWN):
-                body.setBodyPart(event.getX(), event.getY());
-                return true;
-            case (MotionEvent.ACTION_MOVE):
-                body.doOperation(event.getX(), event.getY());
-                this.invalidate();
-                return true;
-            case (MotionEvent.ACTION_UP):
-                body.releaseBodyPart();
-                this.invalidate();
-                return true;
+        if (event.getPointerCount() > 1) {
+            float xMid = (MotionEventCompat.getX(event, index) + MotionEventCompat.getX(event, index + 1)) / 2;
+            float yMid = (MotionEventCompat.getY(event, index) + MotionEventCompat.getY(event, index + 1)) / 2;
+            body.setBodyPart(xMid, yMid);
+
+
+        } else {
+
+            switch (action) {
+                case (MotionEvent.ACTION_DOWN):
+                    body.setBodyPart(event.getX(), event.getY());
+                    return true;
+                case (MotionEvent.ACTION_MOVE):
+                    body.doOperation(event.getX(), event.getY());
+                    this.invalidate();
+                    return true;
+                case (MotionEvent.ACTION_UP):
+                    body.releaseBodyPart();
+                    this.invalidate();
+                    return true;
+            }
         }
-        return  true;
+        return true;
     }
 
     public static int getScreenWidth() {

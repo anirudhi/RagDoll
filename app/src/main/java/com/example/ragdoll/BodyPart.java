@@ -20,13 +20,17 @@ public class BodyPart extends AbstractPart {
     float height, width, angle;
     RectF rect;
     BodyPart child;
+    float constraint;
+    float totalAngle;
 
-    BodyPart(float height, float width, PointF offset, PointF pivot) {
+    BodyPart(float height, float width, PointF offset, PointF pivot, Float constraint) {
         this.height = height;
         this.width = width;
         this.angle = 0;
         this.rect = new RectF(0, 0, width, height);
         this.pivot = pivot;
+        this.constraint = constraint;
+        this.totalAngle = 0;
 
         this.rotationtMatrix = new Matrix();
         this.rotationtMatrix.preTranslate(offset.x, offset.y);
@@ -49,6 +53,11 @@ public class BodyPart extends AbstractPart {
                 new PointF(event.x - points[0], event.y - points[1]));
 
         if (angle != NaN) {
+            totalAngle += angle;
+            if (constraint != 0f && (totalAngle > constraint || totalAngle < (constraint * -1))) {
+                totalAngle -= angle;
+                return;
+            }
             this.rotationtMatrix.preRotate(angle, pivot.x, pivot.y);
             this.combinedMatrix.reset();
             this.combinedMatrix.setConcat(this.parentMatrix, this.rotationtMatrix);
